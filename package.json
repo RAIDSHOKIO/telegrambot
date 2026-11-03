@@ -1,0 +1,16 @@
+{
+  "name": "telegrambot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "type": "module",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "node --watch bot.js"
+  },
+  "keywords": [],
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "grammy": "^1.30.0"
+  }
+}
