@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f4f1">
+  <title>Напоминания</title>
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem('reminder-theme');
+        const theme = saved === 'dark' || saved === 'light'
+          ? saved
+          : matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+      } catch (error) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar"><a class="brand" href="#main" aria-label="Напоминания — к содержимому"><span class="brand-mark" aria-hidden="true">✳</span> НАПОМИНАНИЯ<span class="brand-dot">.</span></a><div class="topbar-actions"><span class="top-label">ВАШ РИТМ / 01</span><button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false"><span class="theme-toggle__icon" aria-hidden="true"></span><span class="theme-toggle__label">СВЕТЛАЯ</span></button></div></header>
+    <main id="main" class="layout">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="eyebrow"><span class="status-dot"></span> МЕНЬШЕ ДЕРЖАТЬ В ГОЛОВЕ</div>
+        <h1 id="page-title">Не забыть<span class="title-dot">.</span><br><span class="outline">Вовремя.</span></h1>
+        <p class="intro-text">Для важных мелочей и больших привычек. Запишите мысль — мы поможем возвращаться к ней вовремя.</p>
+        <div class="intro-bottom" aria-hidden="true"><span>ОДНА МЫСЛЬ.<br>СВОЙ ИНТЕРВАЛ.</span><span class="arrow">↘</span></div>
+      </section>
+      <section class="form-card" aria-labelledby="form-title">
+        <div class="card-head"><div><span class="card-kicker">НОВОЕ НАПОМИНАНИЕ</span><h2 id="form-title">Начнём с главного<span>.</span></h2></div><span class="card-number" aria-hidden="true">01 / 01</span></div>
+        <form id="reminder-form" novalidate>
+          <div class="field"><div class="field-heading"><label for="reminder-text">О чём напомнить?</label><span class="field-index">01</span></div><textarea id="reminder-text" name="text" rows="4" maxlength="1000" placeholder="Например, выпить стакан воды" aria-describedby="text-help text-error" required></textarea><div class="field-meta"><span id="text-help">Коротко и по делу</span><span><span id="char-count">0</span> / 1000</span></div><p class="error" id="text-error"></p></div>
+          <div class="field interval-field"><div class="field-heading"><label for="interval">Когда напомнить?</label><span class="field-index">02</span></div><div class="interval-inputs"><div class="number-wrap"><input id="interval" name="interval" type="number" inputmode="numeric" min="1" step="1" placeholder="30" aria-describedby="interval-help interval-error" required></div><div class="select-wrap"><label class="visually-hidden" for="unit">Единица интервала</label><select id="unit" name="unit"><option value="s">секунд</option><option value="m" selected>минут</option><option value="h">часов</option></select></div></div><p id="interval-help" class="helper">Напомнить один раз через указанный интервал</p><p class="error" id="interval-error"></p></div>
+          <fieldset class="presets"><legend>БЫСТРЫЙ ВЫБОР</legend><div class="preset-list"><button type="button" data-value="30" data-unit="s">30 сек</button><button type="button" data-value="5" data-unit="m">5 мин</button><button type="button" data-value="30" data-unit="m">30 мин</button><button type="button" data-value="1" data-unit="h">1 час</button></div></fieldset>
+          <button class="submit" type="submit"><span>Создать напоминание</span><span aria-hidden="true">↗</span></button>
+          <div id="status" class="status" role="status" aria-live="polite">Сервис отправки пока не подключён.</div>
+        </form>
+      </section>
+    </main>
+    <footer class="footer"><span>МАЛЕНЬКИЕ ШАГИ. БОЛЬШЕ ПОРЯДКА.</span><span>СДЕЛАНО ДЛЯ ВАШЕГО ВРЕМЕНИ <span aria-hidden="true">✳</span></span></footer>
+  </div>
+</body>
+</html>
