@@ -79,25 +79,6 @@ form.addEventListener("submit", (event) => {
     timeBoolean = false;
 });
 
-// const themeToggle = document.querySelector("#theme-toggle");
-// const themeLabel = document.querySelector(".theme-toggle__label");
-
-// if (document.documentElement.dataset.theme === "dark") {
-//     themeLabel.textContent = "ТЁМНАЯ";
-// }
-
-// themeToggle.addEventListener("click", () => {
-//     if (document.documentElement.dataset.theme === "dark") {
-//         document.documentElement.dataset.theme = "light";
-//         themeLabel.textContent = "СВЕТЛАЯ";
-//         localStorage.setItem("reminder-theme", "light");
-//     } else {
-//         document.documentElement.dataset.theme = "dark";
-//         themeLabel.textContent = "ТЁМНАЯ";
-//         localStorage.setItem("reminder-theme", "dark");
-//     }
-// });
-
 if (window.Telegram && window.Telegram.WebApp) {
     window.Telegram.WebApp.ready();
     window.Telegram.WebApp.expand();
