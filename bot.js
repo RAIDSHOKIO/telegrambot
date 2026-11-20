@@ -8,7 +8,7 @@ const bot = new Bot(process.env.BOT_API_KEY);
 bot.on("message:text", async (ctx) => {
   const keyboard = new InlineKeyboard().webApp(
     "приложение",
-    "https://telegrambot-puce-five.vercel.app/"
+    "https://apptelegrambot.vercel.app"
   );
 
   await ctx.reply("Апка", { reply_markup: keyboard });
